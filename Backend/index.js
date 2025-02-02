@@ -2,12 +2,14 @@ import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
 import jwt from 'jsonwebtoken';
-import config from './config.json' assert { type: "json" };
+import fs from 'fs';
 import mongoose from 'mongoose';
 import authenticateToken from './utilities.js';
 import User from './models/user.model.js';
 import Note from './models/note.model.js';
 import bcrypt from 'bcrypt';
+
+const config = JSON.parse(fs.readFileSync('./config.json', 'utf-8'));
 
 const PORT = process.env.PORT || 4000;
 const app = express();
